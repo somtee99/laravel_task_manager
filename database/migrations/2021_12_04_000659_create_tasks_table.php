@@ -16,7 +16,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name'); //stores the name of the task
-            $table->string('priority'); //holds the priority level of task
+            $table->integer('priority'); //holds the priority level of task
             $table->foreignId('project_id')->constrained(); //foreign key that relates task to project 
             $table->timestamps();
         });

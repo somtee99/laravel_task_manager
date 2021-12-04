@@ -15,6 +15,10 @@ class ProjectController extends Controller
      * @return Response
      */
     public function show(){
+        /**
+         * gets all projects according to the most recent
+         * @var Project[]
+         */
         $projects = Project::whereNotNull('id')->latest()->get();
 
         return view('pages.projects.show', ['projects' => $projects]);
@@ -27,8 +31,10 @@ class ProjectController extends Controller
      * @return Response
      */
     public function create(Request $request){
+        //store project values
         $project['name'] = $request->name;
 
+        //create project
         Project::create($project);
 
         return redirect('/projects')->withStatus('Project was created!');

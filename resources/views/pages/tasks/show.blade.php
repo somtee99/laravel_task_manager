@@ -26,9 +26,13 @@
                       
                 </div>
                 
-                @foreach($tasks as $task)
-                    <x-task-card :task="$task"/>
-                @endforeach
+                <ul class="list-group shadow-lg connectedSortable" id="item-drag-drop">
+                    @foreach($tasks as $task)
+                        <li class="list-group-item" item-id="{{ $task->id }}">
+                            <x-task-card :task="$task"/>
+                        </li>
+                    @endforeach
+                </ul>
 
             </div>
         </div>

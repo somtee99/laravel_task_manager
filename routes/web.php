@@ -33,6 +33,7 @@ Route::group(['prefix' => '/tasks'], function(){
     Route::get('/{project_id}', [TaskController::class, 'show']);
     Route::get('/{project_id}/add', [TaskController::class, 'showCreate']);
     Route::post('/create', [TaskController::class, 'create']);
+    Route::post('/update-order', [TaskController::class, 'updateTasksOrder']);
 });
 
 

@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function show($project_id){
         $project = Project::find($project_id);
-        $tasks = $project->tasks;
+        $tasks = $project->tasks()->orderBy('priority')->get();
 
         /**
          * holds necessary data for the view
@@ -62,5 +62,29 @@ class TaskController extends Controller
         $data = ['projects' => $projects, 'project_id' => $project_id];
 
         return view('pages.tasks.create', $data);
+    }
+    
+    /**
+     * function to update tasks priorities
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return Response
+     */
+    public function updateTasksOrder(Request $request){
+        
+		if($request->has('items'))
+    	{
+            $items = $request->items;
+            
+			foreach ($items as $key => $value) {
+				$key = $key + 1;
+				Task::where('id', $value)
+						->update([
+							'priority' => $key
+						]);
+			}
+		}
+
+    	return response()->json(['status'=>'success']);
     }
 }
