@@ -14,6 +14,11 @@ cp .env.example .env
 - Create database on local server
 - Set mysql database credentials in .env
 
+### Generate API key
+```
+php artisan key:generate
+```
+
 ### Run project
 ```
 php artisan serve
