@@ -33,9 +33,7 @@
                     @endif
                 @endforeach 
             </div>
-
-            
-            
+        
         </form>
 
     </x-auth-card>
