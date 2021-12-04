@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,12 @@ Route::group(['prefix' => '/projects'], function(){
     Route::get('/add', [ProjectController::class, 'showCreate']);
     Route::post('/create', [ProjectController::class, 'create']);
 });
+
+Route::group(['prefix' => '/tasks'], function(){
+    Route::get('/{project_id}', [TaskController::class, 'show']);
+    Route::get('/{project_id}/add', [TaskController::class, 'showCreate']);
+    Route::post('/create', [TaskController::class, 'create']);
+});
+
 
 require __DIR__.'/auth.php';

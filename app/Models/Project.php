@@ -15,4 +15,13 @@ class Project extends Model
      * @var string[]
      */
     protected $fillable = ['name'];
+
+    /**
+     * function to return all tasks within a project
+     *
+     * @return Tasks[]
+     */
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
 }

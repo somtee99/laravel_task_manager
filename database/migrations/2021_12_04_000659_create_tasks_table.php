@@ -18,7 +18,6 @@ class CreateTasksTable extends Migration
             $table->string('name'); //stores the name of the task
             $table->string('priority'); //holds the priority level of task
             $table->foreignId('project_id')->constrained(); //foreign key that relates task to project 
-            $table->foreignId('user_id')->constrained(); //foreign key that relates task to creator(user) 
             $table->timestamps();
         });
     }
