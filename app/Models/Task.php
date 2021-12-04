@@ -19,9 +19,7 @@ class Task extends Model
     ];
 
     /**
-     * function to get the project a task belongs to
-     *
-     * @return Project
+     * the project that owns task
      */
     public function project()
     {

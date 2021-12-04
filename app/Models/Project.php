@@ -17,9 +17,7 @@ class Project extends Model
     protected $fillable = ['name'];
 
     /**
-     * function to return all tasks within a project
-     *
-     * @return Tasks[]
+     * the tasks that belong to a project
      */
     public function tasks(){
         return $this->hasMany(Task::class);

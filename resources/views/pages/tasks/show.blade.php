@@ -26,13 +26,19 @@
                       
                 </div>
                 
-                <ul class="list-group shadow-lg connectedSortable" id="item-drag-drop">
-                    @foreach($tasks as $task)
-                        <li class="list-group-item" item-id="{{ $task->id }}">
-                            <x-task-card :task="$task"/>
-                        </li>
-                    @endforeach
-                </ul>
+                @if(count($tasks))
+                    <ul class="list-group shadow-lg connectedSortable" id="item-drag-drop">
+                        @foreach($tasks as $task)
+                            <li class="list-group-item" item-id="{{ $task->id }}">
+                                <x-task-card :task="$task"/>
+                            </li>
+                        @endforeach
+                    </ul>
+                @else
+                    <h2 class="py-12 font-semibold text-center text-md text-gray-500 leading-tight">
+                        No Task Available. Click "Add Task" to create task for {{ $project->name }}
+                    </h2>
+                @endif
 
             </div>
         </div>

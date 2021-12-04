@@ -18,9 +18,15 @@
                     </a>   
                 </div>
                 
-                @foreach($projects as $project)
-                    <x-project-card :project="$project"/>
-                @endforeach
+                @if(count($projects))
+                    @foreach($projects as $project)
+                        <x-project-card :project="$project"/>
+                    @endforeach
+                @else
+                    <h2 class="py-12 font-semibold text-center text-md text-gray-500 leading-tight">
+                        No Project Available. Click "New Project" to Get Started.
+                    </h2>
+                @endif
 
             </div>
         </div>

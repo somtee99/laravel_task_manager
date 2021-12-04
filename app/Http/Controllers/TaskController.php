@@ -37,7 +37,7 @@ class TaskController extends Controller
         //set the required data for task creation
         $task['name'] = $request->name;
         $task['project_id'] = $request->project_id;
-        $task['priority'] = 1;
+        $task['priority'] = 0;
 
         //create task
         $task = Task::create($task);
