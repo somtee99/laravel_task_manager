@@ -14,7 +14,7 @@ class TaskController extends Controller
      * @param int $project_id
      * @return Response
      */
-    public function show($project_id){
+    public function show(int $project_id){
         $project = Project::find($project_id);
         $tasks = $project->tasks()->orderBy('priority')->get();
 
@@ -45,7 +45,7 @@ class TaskController extends Controller
         //create task
         $task = Task::create($task);
 
-        return redirect('tasks/'.$task->project_id)->withStatus('Task was created!');
+        return redirect('tasks/'.$task->project_id);
     }
 
     /**
@@ -54,17 +54,15 @@ class TaskController extends Controller
      * @param int $project_id
      * @return Response
      */
-    public function showCreate($project_id){
-        //get all projects to display 
-        $projects = Project::all();
-
+    public function showCreate(int $project_id){
         /**
-         * holds necessary data for the view
+         * project of tasked to be create
+         * 
          * @var array
          */
-        $data = ['projects' => $projects, 'project_id' => $project_id];
+        $project = Project::find($project_id);
 
-        return view('pages.tasks.create', $data);
+        return view('pages.tasks.create', compact('project'));
     }
     
     /**
@@ -86,12 +84,10 @@ class TaskController extends Controller
 			foreach ($items as $key => $value) {
 				$key = $key + 1;
 				Task::where('id', $value)
-						->update([
-							'priority' => $key
-						]);
+						->update(['priority' => $key]);
 			}
 		}
 
-    	return response()->json(['status'=>'success']);
+    	return response()->json(['status' => 'success']);
     }
 }

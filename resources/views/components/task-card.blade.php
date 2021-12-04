@@ -6,6 +6,6 @@
             Task {{ $task->priority }}
         @endif
     </h6>
+    
     {{ $task->name }}
-
 </x-card>

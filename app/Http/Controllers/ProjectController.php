@@ -37,7 +37,7 @@ class ProjectController extends Controller
         //create project
         Project::create($project);
 
-        return redirect('/projects')->withStatus('Project was created!');
+        return redirect('/projects');
     }
 
     /**

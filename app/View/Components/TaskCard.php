@@ -11,6 +11,7 @@ class TaskCard extends Component
     /**
      * Create a new component instance.
      *
+     * @param Task $task
      * @return void
      */
     public function __construct(Task $task)

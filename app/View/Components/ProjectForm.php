@@ -2,20 +2,18 @@
 
 namespace App\View\Components;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class Layout extends Component
+class ProjectForm extends Component
 {
-    public $title;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title)
+    public function __construct()
     {
-        $this->title = $title;
+        //
     }
 
     /**
@@ -25,10 +23,6 @@ class Layout extends Component
      */
     public function render()
     {
-        if(Auth::check()){
-            return view('layouts.app');
-        }else{
-            return view('layouts.guest');
-        }    
+        return view('components.forms.project-form');
     }
 }
