@@ -5,7 +5,7 @@
 composer install
 ```
 
-### Set up enivoronment for development
+### Set up environment for development
 - Run to copy env example
 ```
 cp .env.example .env
