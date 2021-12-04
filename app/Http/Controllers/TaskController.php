@@ -34,10 +34,13 @@ class TaskController extends Controller
      * @return Response
      */
     public function create(Request $request){
+        //get project in subject
+        $project = Project::find($request->project_id);
+
         //set the required data for task creation
         $task['name'] = $request->name;
         $task['project_id'] = $request->project_id;
-        $task['priority'] = 0;
+        $task['priority'] = $project->tasks()->count() + 1; //set to last available priority
 
         //create task
         $task = Task::create($task);
@@ -74,6 +77,10 @@ class TaskController extends Controller
         
 		if($request->has('items'))
     	{
+            /**
+             * stores items from request
+             * @var array
+             */
             $items = $request->items;
             
 			foreach ($items as $key => $value) {
